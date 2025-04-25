@@ -1,4 +1,4 @@
-package api
+package rest_easy
 
 import (
 	"context"
@@ -118,8 +118,6 @@ func (s *Server) mount() error {
 
 // Run hosts the parentMux and handles a graceful shutdown.
 func (s *Server) Run(ctx context.Context) error {
-
-	// Initialize Logging w/ defined logger
 
 	mountErr := s.mount()
 	if mountErr != nil {

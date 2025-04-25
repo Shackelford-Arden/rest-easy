@@ -4,13 +4,13 @@ import (
 	"log/slog"
 	"net/http"
 
-	"github.com/Shackelford-Arden/rest-easy/pkg/api"
+	rest "github.com/Shackelford-Arden/rest-easy"
 )
 
 func AccessLogMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// Wrap the response writer to capture the status code
-		wrapped := api.NewResponseWriter(w)
+		wrapped := rest.NewResponseWriter(w)
 
 		// Process the request
 		next.ServeHTTP(wrapped, r)

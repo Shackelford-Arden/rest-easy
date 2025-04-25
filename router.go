@@ -1,9 +1,10 @@
-package api
+package rest_easy
 
 import (
 	"fmt"
 	"log/slog"
 	"net/http"
+	"slices"
 	"strings"
 )
 
@@ -63,7 +64,9 @@ func (r *Router) Handle(pattern string, handler http.Handler) {
 	fullPath := r.fullPath(path)
 
 	// Register the handler with all middlewares applied
-	for _, middleware := range r.middlewares {
+	mdws := r.middlewares
+	slices.Reverse(mdws)
+	for _, middleware := range mdws {
 		handler = middleware(handler)
 	}
 

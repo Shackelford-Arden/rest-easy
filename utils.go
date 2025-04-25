@@ -1,4 +1,4 @@
-package api
+package rest_easy
 
 import (
 	"net/http"
